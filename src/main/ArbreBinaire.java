@@ -1,7 +1,5 @@
 package main;
 
-
-
 /**
  *
  * Classe d'objets repr�sentant un arbre binaire de recherche.
@@ -41,6 +39,8 @@ public class ArbreBinaire< Clef extends Comparable< Clef > > {
          */
         public Noeud< Clef > _gauche;
         public Noeud< Clef > _droite;
+        
+
 
         /**
          * Constructeur pour un noeud.
@@ -78,7 +78,7 @@ public class ArbreBinaire< Clef extends Comparable< Clef > > {
      * Contient la premier Noeud de l'arbre.
      * Si la racine est null, alors l'arbre est vide.
      */
-    protected Noeud< Clef > _racine;
+    public Noeud< Clef > _racine;
 
     /**
      * Construit un arbre Vide.
@@ -283,6 +283,13 @@ public class ArbreBinaire< Clef extends Comparable< Clef > > {
      * ************************************************************************
      * Placez vos explications ici :
      *
+     *la fonction taille retourn la taille de l'arbre 
+     *
+     *si l'arbre est vide ou qu'il n'a pas d'enfant gauche ni droit 
+     *il n'est pasnecéssaire de faire appelle a celle ci dans la fonction hauteur
+     *on retour directement 0 ou 1 
+     *par la suite on cherche le noeud cible dans l'abre et calcule la taille 
+     *du sous arbre  
      *
      *
      *
@@ -302,10 +309,66 @@ public class ArbreBinaire< Clef extends Comparable< Clef > > {
      */
     public int hauteur( Clef cible ) {
         // Placez votre code ici pour la question 5.
+    	assert null != cible;
 
-        return 0;
+        
+        Noeud< Clef > courant = _racine;
+        int direction;
+        
+        
+        if( null == _racine ) {
+            // donc : l'arbre est vide hauteur=0
+           return 0;
+        } else {
+        	//donc : on est a la racine hauteur=1
+        	if (courant._droite==null&&courant._gauche==null) {
+        		return 1;
+				
+			} else {
+				//on cherche la cible et on calcule la taille de celui-ci
+				do {
+	             direction = null != courant
+	                     ? cible.compareTo( courant._clef )
+	                     : 0;
+	             
+	             if( direction < 0 ) {
+	                 
+	                 courant = courant._gauche;
+	             } else if( direction > 0 ) {
+	               
+	                 courant = courant._droite;
+	             }
+	         } while( null != courant
+	                 &&
+	                 0 != direction );
+
+				return taille(courant);
+			}
+        	
+        }
+        
+    
+        
     }
+    
+    /**
+     * fonction recursif qui retourn la taille 
+     * d'un arbre 
+     * **/
+    public int taille(Noeud< Clef > courant) {
+    	
+    	if (courant==null) {
+    		return 0;
+			
+		} else {
 
+			return 1+Math.max(taille(courant._droite), taille(courant._droite));
+		}
+    	
+    	
+    }
+    
+    
     /**
      * Transforme un arbre binaire de recherche en une representation infixe sous
      * forme d'une chaine de caracteres.

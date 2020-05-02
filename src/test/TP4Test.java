@@ -15,6 +15,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
 
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class TP4Test {
@@ -208,6 +210,7 @@ class TP4Test {
 
     @Test
     void classer1() {
+    	
         Integer [] t = {};
         Integer[] t2 = Arrays.copyOf( t, t.length );
 
@@ -219,6 +222,7 @@ class TP4Test {
     }
     @Test
     void classer2() {
+    	
         Integer [] t = {0, 2, 4, 6, 8};
         Integer[] t2 = Arrays.copyOf( t, t.length );
 
@@ -230,6 +234,7 @@ class TP4Test {
     }
     @Test
     void classer3() {
+ 
         Integer [] t = {0, 1, 2, 3, 4};
         Integer[] t2 = Arrays.copyOf( t, t.length );
 
@@ -241,6 +246,7 @@ class TP4Test {
     }
     @Test
     void classer4() {
+    	
         Integer [] t = {0};
         Integer[] t2 = Arrays.copyOf( t, t.length );
 
@@ -252,6 +258,7 @@ class TP4Test {
     }
     @Test
     void classer5() {
+    	
         Integer [] t = {0, 0, 1, 2, 3, 1, 4};
         Integer[] t2 = Arrays.copyOf( t, t.length );
 
@@ -263,6 +270,7 @@ class TP4Test {
     }
     @Test
     void classer6() {
+    	
         Integer [] t = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18};
         Integer[] t2 = Arrays.copyOf( t, t.length );
 

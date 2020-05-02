@@ -1,6 +1,8 @@
 package main;
 
 
+
+import java.util.ArrayList;
 import java.util.function.Function;
 
 public class Principali20 {
@@ -21,10 +23,14 @@ public class Principali20 {
      *
      *
      ***************************************************************************************
+     *
+     *
+     *
      *Anna dayi développes chwiya je ne sais 
      *pas amk vous faites et la methode que vous  suivez 
      *exactement biz 
      *et 3awed lahssab on ne sais jamais 
+     *
      *
      *Meilleur: tableau dejas trié
      *------------------------------
@@ -75,7 +81,7 @@ public class Principali20 {
 	            } 
 	        } 
 	  
-	        // shifting the min. 
+	        
 	        changer(tab, i, min_i); 
 	        
 	        if (tab[min_i] == max)  
@@ -125,6 +131,65 @@ public class Principali20 {
     public static < E, F >
     void classer( E [] tab, Function< E, F > classification ) {
         // Placez votre code ici pour la question 2.
+    	
+    	
+    	
+    	//on deux listes qui vont contenir les valeurs trié au fur et à mesure 
+    	//le nombre de liste depand de la fonction passé en paramétre ici deux suffisent 
+    	 ArrayList<E> al = new ArrayList<E>();
+    	 ArrayList<E> al2 = new ArrayList<E>();
+    	
+    	
+    	//on parcours le tableau jusqu'au bout 
+    	 /***
+    	  * si on a un 0 on ajoute au debut de la liste une 
+    	  * si on a un un on ajoute a la fin de la liste une
+    	  * sinn on ajoute au debut de la liste 2
+    	  * 
+    	  * ***/
+    	for (int i = 0; i < tab.length; i++) {
+    		    		
+    		F r=classification.apply(tab[i]);    		
+    		int swi=(Integer)r;
+    		switch (swi) {
+			case 0:
+				al.add(0,tab[i]);
+				break;
+             case 1:
+            	 al.add(tab[i]);
+            	 
+				break;
+             case 2:
+            	 al2.add(tab[i]);            	 				
+ 				break;
+
+			default:
+				//ajuter des cases dans le cas d'autres classements
+				break;
+			}
+    		
+			
+		}
+    	
+    	/***
+    	 * trier ensuite notre tableau en lui insérant 
+    	 * le contenu des listes
+    	 * */
+    	
+    	for (int i = 0; i < al.size(); i++) {
+    		tab[i]=(E) al.get(i);
+    					
+		}
+    	int last=al.size();
+    	if (!al2.isEmpty()) {
+    		for (int i = 0; i < al2.size(); i++) {
+        		tab[last]=(E) al2.get(i);
+        		last++;
+    			
+    		}
+			
+		}
+    	
 
     }
 
